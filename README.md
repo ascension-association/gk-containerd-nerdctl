@@ -18,7 +18,8 @@ The sections below assume you are logged into to your gokrazy device using
 #### Run a container
 
 ```
-nerdctl pull docker.io/library/alpine:latest && nerdctl run --net-host --rm -t docker.io/library/alpine:latest my-container-name
+mkdir -p /perm/cni/net.d
+nerdctl pull docker.io/library/alpine:latest && nerdctl run --net host --cni-path /perm/cni --cni-netconfpath /perm/cni/net.d --rm -it docker.io/library/alpine:latest /bin/ash
 ```
 
 #### Optional: tmpfs
