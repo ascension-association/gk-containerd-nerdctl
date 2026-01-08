@@ -1,2 +1,32 @@
-# gk-containerd-nerdctl
-static containerd+nerdctl build for gokrazy
+## containerd-nerdctl for gokrazy
+
+This package contains the static build of https://github.com/containerd/containerd / https://github.com/opencontainers/runc / https://github.com/containerd/nerdctl
+
+This is an alternative to [podman in gokrazy](https://gokrazy.org/packages/docker-containers/). It's larger but has less dependencies.
+
+### Usage
+
+```
+gok add github.com/ascension-association/gk-containerd-nerdctl
+gok update
+```
+
+The sections below assume you are logged into to your gokrazy device using
+[breakglass](https://github.com/gokrazy/breakglass).
+
+
+#### Run a container
+
+```
+nerdctl pull docker.io/library/alpine:latest && nerdctl run --net-host --rm -t docker.io/library/alpine:latest my-container-name
+```
+
+#### Optional: tmpfs
+
+By default, containers are stored on disk (`/var` is a symlink to `/perm/var` on
+the permanent data partition). If you only want to try something out without
+keeping the containers around across reboots, it is faster to work in RAM:
+
+```
+mount -t tmpfs tmpfs /var
+```
