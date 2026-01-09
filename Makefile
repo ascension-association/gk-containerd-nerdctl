@@ -6,6 +6,12 @@ _gokrazy/extrafiles_amd64.tar:
 	curl -fsSL -o _gokrazy/extrafiles_amd64/usr/local/bin/runc https://github.com/opencontainers/runc/releases/download/v1.3.0/runc.amd64
 	chmod +x _gokrazy/extrafiles_amd64/usr/local/bin/runc
 	curl -fsSL https://github.com/containerd/nerdctl/releases/download/v2.2.1/nerdctl-2.2.1-linux-amd64.tar.gz | tar xzv -C _gokrazy/extrafiles_amd64/usr/local/bin/ --exclude *.sh
+	echo '#!/bin/sh' > _gokrazy/extrafiles_amd64/usr/local/bin/docker
+	echo '/usr/local/bin/nerdctl "$$@"' >> _gokrazy/extrafiles_amd64/usr/local/bin/docker
+	chmod +x _gokrazy/extrafiles_amd64/usr/local/bin/docker
+	echo '#!/bin/sh' > _gokrazy/extrafiles_amd64/usr/local/bin/docker-compose
+	echo '/usr/local/bin/nerdctl compose "$$@"' >> _gokrazy/extrafiles_amd64/usr/local/bin/docker-compose
+	chmod +x _gokrazy/extrafiles_amd64/usr/local/bin/docker-compose
 	cd _gokrazy/extrafiles_amd64 && tar cf ../extrafiles_amd64.tar *
 	rm -rf _gokrazy/extrafiles_amd64
 
@@ -15,6 +21,12 @@ _gokrazy/extrafiles_arm64.tar:
 	curl -fsSL -o _gokrazy/extrafiles_arm64/usr/local/bin/runc https://github.com/opencontainers/runc/releases/download/v1.3.0/runc.arm64
 	chmod +x _gokrazy/extrafiles_arm64/usr/local/bin/runc
 	curl -fsSL https://github.com/containerd/nerdctl/releases/download/v2.2.1/nerdctl-2.2.1-linux-arm64.tar.gz | tar xzv -C _gokrazy/extrafiles_arm64/usr/local/bin/ --exclude *.sh
+	echo '#!/bin/sh' > _gokrazy/extrafiles_arm64/usr/local/bin/docker
+	echo '/usr/local/bin/nerdctl "$$@"' >> _gokrazy/extrafiles_arm64/usr/local/bin/docker
+	chmod +x _gokrazy/extrafiles_arm64/usr/local/bin/docker
+	echo '#!/bin/sh' > _gokrazy/extrafiles_arm64/usr/local/bin/docker-compose
+	echo '/usr/local/bin/nerdctl compose "$$@"' >> _gokrazy/extrafiles_arm64/usr/local/bin/docker-compose
+	chmod +x _gokrazy/extrafiles_arm64/usr/local/bin/docker-compose
 	cd _gokrazy/extrafiles_arm64 && tar cf ../extrafiles_arm64.tar *
 	rm -rf _gokrazy/extrafiles_arm64
 
