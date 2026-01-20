@@ -8,6 +8,8 @@ _gokrazy/extrafiles_amd64.tar:
 	curl -fsSL https://github.com/containerd/nerdctl/releases/download/v2.2.1/nerdctl-2.2.1-linux-amd64.tar.gz | tar xzv -C _gokrazy/extrafiles_amd64/usr/local/bin/ --exclude *.sh
 	echo '#!/bin/sh' > _gokrazy/extrafiles_amd64/usr/local/bin/docker
 	echo '/usr/local/bin/nerdctl "$$@"' >> _gokrazy/extrafiles_amd64/usr/local/bin/docker
+	echo '#!/bin/sh' > _gokrazy/extrafiles_amd64/usr/local/bin/podman
+	echo '/usr/local/bin/nerdctl "$$@"' >> _gokrazy/extrafiles_amd64/usr/local/bin/podman
 	chmod +x _gokrazy/extrafiles_amd64/usr/local/bin/docker
 	echo '#!/bin/sh' > _gokrazy/extrafiles_amd64/usr/local/bin/docker-compose
 	echo '/usr/local/bin/nerdctl compose "$$@"' >> _gokrazy/extrafiles_amd64/usr/local/bin/docker-compose
@@ -23,6 +25,8 @@ _gokrazy/extrafiles_arm64.tar:
 	curl -fsSL https://github.com/containerd/nerdctl/releases/download/v2.2.1/nerdctl-2.2.1-linux-arm64.tar.gz | tar xzv -C _gokrazy/extrafiles_arm64/usr/local/bin/ --exclude *.sh
 	echo '#!/bin/sh' > _gokrazy/extrafiles_arm64/usr/local/bin/docker
 	echo '/usr/local/bin/nerdctl "$$@"' >> _gokrazy/extrafiles_arm64/usr/local/bin/docker
+	echo '#!/bin/sh' > _gokrazy/extrafiles_arm64/usr/local/bin/podman
+	echo '/usr/local/bin/nerdctl "$$@"' >> _gokrazy/extrafiles_arm64/usr/local/bin/podman
 	chmod +x _gokrazy/extrafiles_arm64/usr/local/bin/docker
 	echo '#!/bin/sh' > _gokrazy/extrafiles_arm64/usr/local/bin/docker-compose
 	echo '/usr/local/bin/nerdctl compose "$$@"' >> _gokrazy/extrafiles_arm64/usr/local/bin/docker-compose
